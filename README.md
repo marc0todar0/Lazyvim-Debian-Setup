@@ -14,11 +14,9 @@ sudo apt install -y ripgrep fd-find python3-pip build-essential tmux lazygit fzf
 ```
 ## Config files
 
-`.bashrc / .bash_profile *utente e *wg.rails.deploy`
-
+`~/.bashrc`
+ - (Add this at the end of the file)
 ```
-export TERM=xterm-256color #put this in the first line
-#...
 alias ls='ls --color=auto'
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export EDITOR='vim'
@@ -29,13 +27,42 @@ export PATH="$HOME/utils:$PATH"
 export DOCKER_HOST=unix:///var/run/docker.sock
 export AWS_PROFILE=ai
 ```
-
+`~/.bash_profile`
+```
+# Source .bashrc so login shells use the same settings
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+```
 `.tmux.conf`
 
 ```
 setw -g mode-keys vi
 set -g base-index 1
 set -g default-terminal "tmux-256color"
+```
+My local alacritty config `~/.config/alacritty/alacritty.toml`
+```
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 9.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[window]
+opacity = 0.90
 ```
 
 ## Clean Neovim State
