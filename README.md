@@ -10,22 +10,16 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 ## Apt basics
 ``` 
-sudo apt install -y \
-  ripgrep \  
-  fd-find \  
-  python3-pip \  
-  build-essential \  
-  tmux \
-  lazygit \
-  fzf
+sudo apt install -y ripgrep fd-find python3-pip build-essential tmux lazygit fzf
 ```
 ## Config files
 
 `.bashrc / .bash_profile *utente e *wg.rails.deploy`
 
 ```
+export TERM=xterm-256color #put this in the first line
+#...
 alias ls='ls --color=auto'
-export TERM=xterm-256color
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export EDITOR='vim'
 export VISUAL='vim'
