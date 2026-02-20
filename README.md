@@ -92,6 +92,66 @@ If this is a new machine, still do this to avoid issues:
 `nvim`  
 `→ :checkhealth`
 
+### Mostra file nascosti/ git-ignored
+
+- Shift \+ i \=\> mostra nell’explorer i file ignorati da git  
+- Shift \+ h \=\> mostra nell’explorer i file nascosti
+
+## Formatters Setup (Optional) 
+
+pip3 install ruff  
+vim \~/.config/nvim/lua/plugins/conform.lua
+```
+return {
+  "stevearc/conform.nvim",
+  opts = {
+    formatters_by_ft = {
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      json = { "prettier" },
+      html = { "prettier" },
+      css = { "prettier" },
+      python = { "ruff_format" },
+      ruby = { "rubocop" },
+    },
+  },
+}
+```
+spc \+ c \+ f \=\> format python
+
+## Absolute Line-numbers (Optional)
+vim \~/.config/nvim/lua/config/options.lua
+```
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+-- -- Disable relative line-numbers
+vim.opt.relativenumber = false
+-- Enable absolute line-numbers
+vim.opt.number = true
+```
+
+## LSP (Optional)
+vim \~/.config/nvim/lua/plugins/lsp.lua
+```
+return {
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        -- Enable ruff server for diagnostics (Errors and warnings)
+        ruff = {},
+        -- Pyright for type checking 
+        pyright = {},
+      },
+    },
+  },
+}
+```
+- gd -> go to definition
+- K -> open documentation modal
 ## LazyVim Replace using ripgrep (Optional)
 
 vim \~/utils/replace
@@ -111,12 +171,14 @@ SEARCH="$1"
 REPLACE="$2"
 SCOPE="${3:-.}"
 if [ -f "$SCOPE" ]; then
-	perl -pi -e "s/\Q$SEARCH\E/\Q$REPLACE\E/g" "$SCOPE"
+	#perl -pi -e "s/\Q$SEARCH\E/\Q$REPLACE\E/g" "$SCOPE"
+	perl -pi -e "s/\Q$SEARCH\E/$REPLACE/g" "$SCOPE"
 	exit 0
 fi
 rg -l --null -- "$SEARCH" "$SCOPE" |
 while IFS= read -r -d '' file; do
-	perl -pi -e "s/\Q$SEARCH\E/\Q$REPLACE\E/g" "$file"
+	perl -pi -e "s/\Q$SEARCH\E/$REPLACE/g" "$file"
+	#perl -pi -e "s/\Q$SEARCH\E/\Q$REPLACE\E/g" "$file"
 done
 
 ```
@@ -162,26 +224,3 @@ f → current file
 d → current folder  
 p → project root
 
-### Mostra file nascosti/ git-ignored
-
-- Shift \+ i \=\> mostra nell’explorer i file ignorati da git  
-- Shift \+ h \=\> mostra nell’explorer i file nascosti
-
-## Formatters Setup \- Rubocop & Ruff (Optional) 
-
-pip3 install ruff  
-vim \~/.config/nvim/lua/plugins/ruff.lua
-
-```
-return {
-  "stevearc/conform.nvim",
-  opts = {
-    formatters_by_ft = {
-      python = { "ruff_format" },
-      ruby = {"rubocop"}
-    },
-  },
-}
-```
-
-spc \+ c \+ f \=\> format python
