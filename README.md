@@ -1,4 +1,4 @@
-# LazyVim Dev setup on Debian (12+) \- Python & Ruby
+# LazyVim Development Setup on Debian
 
 ## NEOVIM
 
