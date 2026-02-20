@@ -10,7 +10,7 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 ## Apt basics
 ``` 
-sudo apt install -y ripgrep fd-find python3-pip build-essential tmux lazygit fzf
+sudo apt install -y ripgrep fd-find python3-pip build-essential tmux lazygit fzf zoxide
 ```
 ## Config files
 
@@ -26,6 +26,7 @@ export DISABLE_SPRING=true
 export PATH="$HOME/utils:$PATH"
 export DOCKER_HOST=unix:///var/run/docker.sock
 export AWS_PROFILE=ai
+eval "$(zoxide init bash)"
 ```
 `~/.bash_profile`
 ```
