@@ -27,6 +27,7 @@ export PATH="$HOME/utils:$PATH"
 export DOCKER_HOST=unix:///var/run/docker.sock
 export AWS_PROFILE=ai
 eval "$(zoxide init bash)"
+source /usr/share/doc/fzf/examples/key-bindings.bash
 ```
 `~/.bash_profile`
 ```
