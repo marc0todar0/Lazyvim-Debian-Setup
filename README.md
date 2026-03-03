@@ -10,7 +10,7 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
 ## Apt basics
 ``` 
-sudo apt install -y ripgrep fd-find python3-pip build-essential tmux lazygit fzf zoxide
+sudo apt install -y ripgrep fd-find python3-pip build-essential tmux lazygit fzf zoxide pipx
 ```
 ## Config files
 
@@ -42,6 +42,7 @@ fi
 setw -g mode-keys vi
 set -g base-index 1
 set -g default-terminal "tmux-256color"
+set-option -g history-limit 15000
 ```
 My local alacritty config `~/.config/alacritty/alacritty.toml`
 ```
@@ -101,7 +102,9 @@ If this is a new machine, still do this to avoid issues:
 
 ## Formatters Setup (Optional) 
 
-pip3 install ruff  
+pipx install ruff
+pipx ensurepath
+gem install rubocop
 vim \~/.config/nvim/lua/plugins/conform.lua
 ```
 return {
