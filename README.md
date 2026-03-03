@@ -101,10 +101,11 @@ If this is a new machine, still do this to avoid issues:
 - Shift \+ h \=\> mostra nell’explorer i file nascosti
 
 ## Formatters Setup (Optional) 
-
+```
 pipx install ruff
 pipx ensurepath
 gem install rubocop
+```
 vim \~/.config/nvim/lua/plugins/conform.lua
 ```
 return {
