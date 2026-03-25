@@ -127,7 +127,7 @@ return {
 ```
 spc \+ c \+ f \=\> format python
 
-## Absolute Line-numbers (Optional)
+## Absolute Line-numbers + Root directory detection
 vim \~/.config/nvim/lua/config/options.lua
 ```
 -- Options are automatically loaded before lazy.nvim startup
@@ -137,6 +137,8 @@ vim \~/.config/nvim/lua/config/options.lua
 vim.opt.relativenumber = false
 -- Enable absolute line-numbers
 vim.opt.number = true
+-- Root directory
+vim.g.root_spec = { ".git", "cwd" }
 ```
 
 ## LSP (Optional)
